@@ -11,7 +11,7 @@ const CodeFormatterTool = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState('formatted'); // 'formatted' or 'minified'
   const [minifiedCode, setMinifiedCode] = useState('');
 
-  const API_BASE_URL = 'http://localhost:8010';
+  const API_BASE_URL = 'https://sharp-kissie-devtools-5e818c05.koyeb.app';
 
   const supportedLanguages = [
     { value: 'javascript', label: 'JavaScript', extension: 'js' },

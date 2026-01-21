@@ -36,7 +36,7 @@ const CodeDiffTool = ({ onNavigate }) => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8010/diff/compare', {
+      const response = await fetch('https://sharp-kissie-devtools-5e818c05.koyeb.app/diff/compare', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

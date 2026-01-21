@@ -11,7 +11,7 @@ import BlogSection from './BlogSection';
 import FeedbackPopup from './FeedbackPopup';
 import './App.css';
 
-const API_BASE_URL = 'http://localhost:8010';
+const API_BASE_URL = 'https://sharp-kissie-devtools-5e818c05.koyeb.app';
 
 function App() {
   const [currentTool, setCurrentTool] = useState('json'); // 'json', 'base64', 'url', 'color', 'regex', 'jwt', 'formatter', 'diff', or 'blog'
