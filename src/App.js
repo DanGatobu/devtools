@@ -379,7 +379,7 @@ function App() {
                 onClick={() => {
                   const feedback = document.getElementById('footerFeedback').value;
                   if (feedback.trim()) {
-                    fetch('/api/feedback', {
+                    fetch(`${API_BASE_URL}/api/feedback`, {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from './config';
 
 const FeedbackPopup = ({ onDismiss }) => {
   const [position, setPosition] = useState({ top: '20px', left: '20px' });
@@ -28,8 +29,10 @@ const FeedbackPopup = ({ onDismiss }) => {
   };
 
   const sendFeedback = async (message) => {
+    const API_BASE_URL = 'https://sharp-kissie-devtools-5e818c05.koyeb.app';
+    
     try {
-      const response = await fetch('/api/feedback', {
+      const response = await fetch(`${API_BASE_URL}/api/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
