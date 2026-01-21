@@ -182,7 +182,7 @@ function ColorTool({ onNavigate }) {
   // Initialize with red color
   useEffect(() => {
     updateAllFormats({ r: 255, g: 0, b: 0 });
-  }, []);
+  }, [updateAllFormats]);
 
   return (
     <div className="app">
