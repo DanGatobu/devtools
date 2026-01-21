@@ -361,7 +361,7 @@ function App() {
             <ul>
               <li><button onClick={() => setCurrentTool('blog')}>Blog</button></li>
               <li><a href="https://devtoolss.sbs">Home</a></li>
-              <li><a href="mailto:dan@devtoolss.sbs">Contact</a></li>
+              <li><a href="mailto:rdan99848@gmail.com">Contact</a></li>
             </ul>
           </div>
           
