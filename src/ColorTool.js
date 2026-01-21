@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 
 function ColorTool({ onNavigate }) {
@@ -93,7 +93,7 @@ function ColorTool({ onNavigate }) {
   };
 
   // Update all color formats based on RGB values
-  const updateAllFormats = (rgb) => {
+  const updateAllFormats = useCallback((rgb) => {
     const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
     const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
     
@@ -104,7 +104,7 @@ function ColorTool({ onNavigate }) {
     setHslValues(hsl);
     setInputColor(hex);
     setError('');
-  };
+  }, []);
 
   // Handle hex input
   const handleHexInput = (value) => {
