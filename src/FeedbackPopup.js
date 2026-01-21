@@ -29,8 +29,6 @@ const FeedbackPopup = ({ onDismiss }) => {
   };
 
   const sendFeedback = async (message) => {
-    const API_BASE_URL = 'https://sharp-kissie-devtools-5e818c05.koyeb.app';
-    
     try {
       const response = await fetch(`${API_BASE_URL}/api/feedback`, {
         method: 'POST',
