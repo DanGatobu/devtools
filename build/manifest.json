@@ -1,0 +1,21 @@
+{
+  "short_name": "DevTools",
+  "name": "DevTools - Free Developer Utilities",
+  "description": "Free online developer tools including JSON formatter, Base64 encoder/decoder, URL encoder, color picker, regex tester, JWT decoder, and code formatter.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#667eea",
+  "background_color": "#f8f9fa",
+  "orientation": "portrait-primary",
+  "categories": ["developer", "utilities", "productivity"],
+  "lang": "en",
+  "scope": "/",
+  "prefer_related_applications": false
+}
