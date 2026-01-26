@@ -13,8 +13,51 @@ import './App.css';
 
 const API_BASE_URL = 'https://sharp-kissie-devtools-5e818c05.koyeb.app';
 
+// Map URL paths to tool names
+const pathToTool = {
+  '/': 'json',
+  '/json-formatter': 'json',
+  '/base64-encoder': 'base64',
+  '/url-encoder': 'url',
+  '/color-picker': 'color',
+  '/regex-tester': 'regex',
+  '/jwt-decoder': 'jwt',
+  '/code-formatter': 'formatter',
+  '/code-diff': 'diff',
+  '/blog': 'blog'
+};
+
+const toolToPath = {
+  'json': '/json-formatter',
+  'base64': '/base64-encoder',
+  'url': '/url-encoder',
+  'color': '/color-picker',
+  'regex': '/regex-tester',
+  'jwt': '/jwt-decoder',
+  'formatter': '/code-formatter',
+  'diff': '/code-diff',
+  'blog': '/blog'
+};
+
+const toolMetaTags = {
+  'json': { title: 'JSON Formatter & Validator', desc: 'Free online JSON formatter, validator, and minifier. Format, validate, and beautify your JSON data instantly.' },
+  'base64': { title: 'Base64 Encoder/Decoder', desc: 'Free online Base64 encoder and decoder. Convert text and files to and from Base64 encoding.' },
+  'url': { title: 'URL Encoder/Decoder', desc: 'Free online URL encoder and decoder. Encode and decode URLs and query parameters.' },
+  'color': { title: 'Color Picker & Converter', desc: 'Free online color picker and converter. Convert between HEX, RGB, HSL color formats.' },
+  'regex': { title: 'Regex Tester', desc: 'Free online regex tester. Test and debug regular expressions with real-time matching.' },
+  'jwt': { title: 'JWT Decoder', desc: 'Free online JWT decoder. Decode and inspect JSON Web Tokens.' },
+  'formatter': { title: 'Code Formatter', desc: 'Free online code formatter. Format JavaScript, HTML, CSS, and more.' },
+  'diff': { title: 'Code Diff Tool', desc: 'Free online code diff tool. Compare and find differences between two code snippets.' },
+  'blog': { title: 'Developer Blog', desc: 'Tips, tutorials, and insights for developers.' }
+};
+
+function getInitialTool() {
+  const path = window.location.pathname;
+  return pathToTool[path] || 'json';
+}
+
 function App() {
-  const [currentTool, setCurrentTool] = useState('json'); // 'json', 'base64', 'url', 'color', 'regex', 'jwt', 'formatter', 'diff', or 'blog'
+  const [currentTool, setCurrentTool] = useState(getInitialTool); // 'json', 'base64', 'url', 'color', 'regex', 'jwt', 'formatter', 'diff', or 'blog'
   const [inputJson, setInputJson] = useState('');
   const [outputJson, setOutputJson] = useState('');
   const [minifiedJson, setMinifiedJson] = useState('');
@@ -25,6 +68,53 @@ function App() {
   const [activeTab, setActiveTab] = useState('formatted');
   const [stats, setStats] = useState({ lines: 0, characters: 0 });
   const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
+
+  // Handle URL-based navigation and update meta tags
+  const navigateTo = useCallback((tool) => {
+    const path = toolToPath[tool] || '/';
+    window.history.pushState({}, '', path);
+    setCurrentTool(tool);
+    
+    // Update canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.href = `https://devtoolss.sbs${path}`;
+    }
+    
+    // Update meta tags
+    const meta = toolMetaTags[tool];
+    if (meta) {
+      document.title = `${meta.title} | DevTools - Free Developer Utilities`;
+      const descMeta = document.querySelector('meta[name="description"]');
+      if (descMeta) descMeta.content = meta.desc;
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.content = meta.title;
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.content = meta.desc;
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) ogUrl.content = `https://devtoolss.sbs${path}`;
+    }
+  }, []);
+
+  // Handle browser back/forward
+  useEffect(() => {
+    const handlePopState = () => {
+      const tool = pathToTool[window.location.pathname] || 'json';
+      setCurrentTool(tool);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Set initial meta tags on mount
+  useEffect(() => {
+    const tool = getInitialTool();
+    const path = toolToPath[tool] || '/';
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.href = `https://devtoolss.sbs${path}`;
+    }
+  }, []);
 
   // Popup management
   useEffect(() => {
@@ -149,35 +239,35 @@ function App() {
   const currentOutput = activeTab === 'formatted' ? outputJson : minifiedJson;
 
   if (currentTool === 'blog') {
-    return <BlogSection onNavigate={setCurrentTool} />;
+    return <BlogSection onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'base64') {
-    return <Base64Tool onNavigate={setCurrentTool} />;
+    return <Base64Tool onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'url') {
-    return <UrlTool onNavigate={setCurrentTool} />;
+    return <UrlTool onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'color') {
-    return <ColorTool onNavigate={setCurrentTool} />;
+    return <ColorTool onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'regex') {
-    return <RegexTool onNavigate={setCurrentTool} />;
+    return <RegexTool onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'jwt') {
-    return <JwtTool onNavigate={setCurrentTool} />;
+    return <JwtTool onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'formatter') {
-    return <CodeFormatterTool onNavigate={setCurrentTool} />;
+    return <CodeFormatterTool onNavigate={navigateTo} />;
   }
 
   if (currentTool === 'diff') {
-    return <CodeDiffTool onNavigate={setCurrentTool} />;
+    return <CodeDiffTool onNavigate={navigateTo} />;
   }
 
   return (
@@ -194,55 +284,55 @@ function App() {
         <div className="nav-links">
           <button 
             className={`nav-btn ${currentTool === 'json' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('json')}
+            onClick={() => navigateTo('json')}
           >
             JSON Formatter
           </button>
           <button 
             className={`nav-btn ${currentTool === 'base64' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('base64')}
+            onClick={() => navigateTo('base64')}
           >
             Base64 Tool
           </button>
           <button 
             className={`nav-btn ${currentTool === 'url' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('url')}
+            onClick={() => navigateTo('url')}
           >
             URL Tool
           </button>
           <button 
             className={`nav-btn ${currentTool === 'color' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('color')}
+            onClick={() => navigateTo('color')}
           >
             Color Tool
           </button>
           <button 
             className={`nav-btn ${currentTool === 'regex' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('regex')}
+            onClick={() => navigateTo('regex')}
           >
             Regex Tool
           </button>
           <button 
             className={`nav-btn ${currentTool === 'jwt' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('jwt')}
+            onClick={() => navigateTo('jwt')}
           >
             JWT Tool
           </button>
           <button 
             className={`nav-btn ${currentTool === 'formatter' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('formatter')}
+            onClick={() => navigateTo('formatter')}
           >
             Code Formatter
           </button>
           <button 
             className={`nav-btn ${currentTool === 'diff' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('diff')}
+            onClick={() => navigateTo('diff')}
           >
             Code Diff
           </button>
           <button 
             className={`nav-btn ${currentTool === 'blog' ? 'active' : ''}`}
-            onClick={() => setCurrentTool('blog')}
+            onClick={() => navigateTo('blog')}
           >
             Blog
           </button>
@@ -349,17 +439,17 @@ function App() {
           <div className="footer-section">
             <h4>Tools</h4>
             <ul>
-              <li><button onClick={() => setCurrentTool('json')}>JSON Formatter</button></li>
-              <li><button onClick={() => setCurrentTool('base64')}>Base64 Tool</button></li>
-              <li><button onClick={() => setCurrentTool('url')}>URL Tool</button></li>
-              <li><button onClick={() => setCurrentTool('color')}>Color Tool</button></li>
+              <li><button onClick={() => navigateTo('json')}>JSON Formatter</button></li>
+              <li><button onClick={() => navigateTo('base64')}>Base64 Tool</button></li>
+              <li><button onClick={() => navigateTo('url')}>URL Tool</button></li>
+              <li><button onClick={() => navigateTo('color')}>Color Tool</button></li>
             </ul>
           </div>
           
           <div className="footer-section">
             <h4>Resources</h4>
             <ul>
-              <li><button onClick={() => setCurrentTool('blog')}>Blog</button></li>
+              <li><button onClick={() => navigateTo('blog')}>Blog</button></li>
               <li><a href="https://devtoolss.sbs">Home</a></li>
               <li><a href="mailto:rdan99848@gmail.com">Contact</a></li>
             </ul>

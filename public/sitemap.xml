@@ -2,61 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://devtoolss.sbs/</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/json-formatter</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/base64-encoder</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/url-encoder</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/color-picker</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/regex-tester</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/jwt-decoder</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/code-formatter</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/code-diff</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtoolss.sbs/blog</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
