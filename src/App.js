@@ -27,6 +27,11 @@ const pathToTool = {
   '/blog': 'blog'
 };
 
+// Helper to check if path is a blog post
+const isBlogPostPath = (path) => {
+  return path.startsWith('/blog/') && path !== '/blog';
+};
+
 const toolToPath = {
   'json': '/json-formatter',
   'base64': '/base64-encoder',
@@ -53,6 +58,10 @@ const toolMetaTags = {
 
 function getInitialTool() {
   const path = window.location.pathname;
+  // Check if it's a blog post path
+  if (isBlogPostPath(path)) {
+    return 'blog';
+  }
   return pathToTool[path] || 'json';
 }
 
@@ -239,7 +248,7 @@ function App() {
   const currentOutput = activeTab === 'formatted' ? outputJson : minifiedJson;
 
   if (currentTool === 'blog') {
-    return <BlogSection onNavigate={navigateTo} />;
+    return <BlogSection onNavigate={navigateTo} currentPath={window.location.pathname} />;
   }
 
   if (currentTool === 'base64') {

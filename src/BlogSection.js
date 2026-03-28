@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 
-const BlogSection = ({ onNavigate }) => {
+const BlogSection = ({ onNavigate, currentPath }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedPost, setSelectedPost] = useState(null);
+  
+  // Generate URL slug from title
+  const generateSlug = (title) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  };
 
   // Blog posts data - 35 total posts (5 per tool × 7 tools)
   const blogPosts = [
@@ -375,9 +382,38 @@ const BlogSection = ({ onNavigate }) => {
     { id: 'regex', name: 'Regex Tool', count: blogPosts.filter(p => p.category === 'regex').length },
     { id: 'url', name: 'URL Tool', count: blogPosts.filter(p => p.category === 'url').length },
   ];
+  
+  // Add slugs to blog posts
+  const postsWithSlugs = blogPosts.map(post => ({
+    ...post,
+    slug: generateSlug(post.title)
+  }));
+  
+  // Determine selected post from URL
+  const getSelectedPostFromPath = () => {
+    if (!currentPath || currentPath === '/blog') return null;
+    const slug = currentPath.replace('/blog/', '');
+    return postsWithSlugs.find(post => post.slug === slug) || null;
+  };
+  
+  const selectedPost = getSelectedPostFromPath();
+  
+  // Navigate to blog post
+  const navigateToPost = (post) => {
+    const path = `/blog/${post.slug}`;
+    window.history.pushState({}, '', path);
+    window.scrollTo(0, 0);
+  };
+  
+  // Navigate back to blog list
+  const navigateToBlogList = () => {
+    window.history.pushState({}, '', '/blog');
+    window.scrollTo(0, 0);
+  };
+  
   const filteredPosts = selectedCategory === 'all' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    ? postsWithSlugs 
+    : postsWithSlugs.filter(post => post.category === selectedCategory);
 
   if (selectedPost) {
     return (
@@ -386,7 +422,7 @@ const BlogSection = ({ onNavigate }) => {
           <button onClick={() => onNavigate('json')} className="back-to-tools">
             ← Back to Tools
           </button>
-          <button onClick={() => setSelectedPost(null)} className="back-to-blog">
+          <button onClick={navigateToBlogList} className="back-to-blog">
             ← Back to Blog
           </button>
         </nav>
@@ -410,7 +446,7 @@ const BlogSection = ({ onNavigate }) => {
           
           <footer className="blog-post-footer">
             <div className="blog-actions">
-              <button onClick={() => setSelectedPost(null)} className="btn btn-primary">
+              <button onClick={navigateToBlogList} className="btn btn-primary">
                 ← Back to Blog
               </button>
               <button 
@@ -477,7 +513,7 @@ const BlogSection = ({ onNavigate }) => {
               <span className="read-time">{post.readTime}</span>
               <button 
                 className="read-more-btn"
-                onClick={() => setSelectedPost(post)}
+                onClick={() => navigateToPost(post)}
               >
                 Read More →
               </button>
