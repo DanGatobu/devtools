@@ -7,6 +7,7 @@ import RegexTool from './RegexTool';
 import JwtTool from './JwtTool';
 import CodeFormatterTool from './CodeFormatterTool';
 import CodeDiffTool from './CodeDiffTool';
+import XmlTool from './XmlTool';
 import BlogSection from './BlogSection';
 import FeedbackPopup from './FeedbackPopup';
 import './App.css';
@@ -24,6 +25,7 @@ const pathToTool = {
   '/jwt-decoder': 'jwt',
   '/code-formatter': 'formatter',
   '/code-diff': 'diff',
+  '/xml-validator': 'xml',
   '/blog': 'blog'
 };
 
@@ -41,6 +43,7 @@ const toolToPath = {
   'jwt': '/jwt-decoder',
   'formatter': '/code-formatter',
   'diff': '/code-diff',
+  'xml': '/xml-validator',
   'blog': '/blog'
 };
 
@@ -53,6 +56,7 @@ const toolMetaTags = {
   'jwt': { title: 'JWT Decoder', desc: 'Free online JWT decoder. Decode and inspect JSON Web Tokens.' },
   'formatter': { title: 'Code Formatter', desc: 'Free online code formatter. Format JavaScript, HTML, CSS, and more.' },
   'diff': { title: 'Code Diff Tool', desc: 'Free online code diff tool. Compare and find differences between two code snippets.' },
+  'xml': { title: 'XML Validator & Formatter', desc: 'Free online XML validator and formatter. Validate, format, and minify XML data.' },
   'blog': { title: 'Developer Blog', desc: 'Tips, tutorials, and insights for developers.' }
 };
 
@@ -279,6 +283,10 @@ function App() {
     return <CodeDiffTool onNavigate={navigateTo} />;
   }
 
+  if (currentTool === 'xml') {
+    return <XmlTool onNavigate={navigateTo} />;
+  }
+
   return (
     <div className="app">
       {showFeedbackPopup && (
@@ -338,6 +346,12 @@ function App() {
             onClick={() => navigateTo('diff')}
           >
             Code Diff
+          </button>
+          <button 
+            className={`nav-btn ${currentTool === 'xml' ? 'active' : ''}`}
+            onClick={() => navigateTo('xml')}
+          >
+            XML Tool
           </button>
           <button 
             className={`nav-btn ${currentTool === 'blog' ? 'active' : ''}`}
