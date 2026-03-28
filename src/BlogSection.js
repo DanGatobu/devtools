@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const BlogSection = ({ onNavigate, currentPath }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentView, setCurrentView] = useState('list'); // 'list' or 'post'
+  const [selectedPostSlug, setSelectedPostSlug] = useState(null);
   
   // Generate URL slug from title
   const generateSlug = (title) => {
@@ -389,25 +391,43 @@ const BlogSection = ({ onNavigate, currentPath }) => {
     slug: generateSlug(post.title)
   }));
   
-  // Determine selected post from URL
-  const getSelectedPostFromPath = () => {
-    if (!currentPath || currentPath === '/blog') return null;
-    const slug = currentPath.replace('/blog/', '');
-    return postsWithSlugs.find(post => post.slug === slug) || null;
-  };
+  // Sync with URL on mount and when currentPath changes
+  useEffect(() => {
+    if (!currentPath || currentPath === '/blog') {
+      setCurrentView('list');
+      setSelectedPostSlug(null);
+    } else {
+      const slug = currentPath.replace('/blog/', '');
+      const post = postsWithSlugs.find(p => p.slug === slug);
+      if (post) {
+        setCurrentView('post');
+        setSelectedPostSlug(slug);
+      } else {
+        setCurrentView('list');
+        setSelectedPostSlug(null);
+      }
+    }
+  }, [currentPath]);
   
-  const selectedPost = getSelectedPostFromPath();
+  // Get selected post
+  const selectedPost = selectedPostSlug 
+    ? postsWithSlugs.find(post => post.slug === selectedPostSlug) 
+    : null;
   
   // Navigate to blog post
   const navigateToPost = (post) => {
     const path = `/blog/${post.slug}`;
     window.history.pushState({}, '', path);
+    setCurrentView('post');
+    setSelectedPostSlug(post.slug);
     window.scrollTo(0, 0);
   };
   
   // Navigate back to blog list
   const navigateToBlogList = () => {
     window.history.pushState({}, '', '/blog');
+    setCurrentView('list');
+    setSelectedPostSlug(null);
     window.scrollTo(0, 0);
   };
   
@@ -442,7 +462,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
             </div>
           </header>
           
-          <div className="blog-content" dangerouslySetInnerHTML={{ __html: selectedPost.content.replace(/\n/g, '<br>') }} />
+          <div className="blog-content" dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
           
           <footer className="blog-post-footer">
             <div className="blog-actions">
@@ -494,7 +514,18 @@ const BlogSection = ({ onNavigate, currentPath }) => {
 
       <div className="blog-grid">
         {filteredPosts.map(post => (
-          <article key={post.id} className="blog-card">
+          <article 
+            key={post.id} 
+            className="blog-card"
+            onClick={() => navigateToPost(post)}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigateToPost(post);
+              }
+            }}
+          >
             <div className="blog-card-header">
               <span className="blog-category">{post.category}</span>
               <span className="blog-date">{post.date}</span>
@@ -513,7 +544,10 @@ const BlogSection = ({ onNavigate, currentPath }) => {
               <span className="read-time">{post.readTime}</span>
               <button 
                 className="read-more-btn"
-                onClick={() => navigateToPost(post)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateToPost(post);
+                }}
               >
                 Read More →
               </button>
