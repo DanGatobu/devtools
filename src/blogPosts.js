@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // Full blog content for all 35 blog posts
 // Each post contains comprehensive markdown content (800-1500 words)
 
