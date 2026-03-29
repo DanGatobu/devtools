@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const BlogSection = ({ onNavigate, currentPath }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [currentView, setCurrentView] = useState('list'); // 'list' or 'post'
   const [selectedPostSlug, setSelectedPostSlug] = useState(null);
   
   // Generate URL slug from title
@@ -394,20 +393,17 @@ const BlogSection = ({ onNavigate, currentPath }) => {
   // Sync with URL on mount and when currentPath changes
   useEffect(() => {
     if (!currentPath || currentPath === '/blog') {
-      setCurrentView('list');
       setSelectedPostSlug(null);
     } else {
       const slug = currentPath.replace('/blog/', '');
       const post = postsWithSlugs.find(p => p.slug === slug);
       if (post) {
-        setCurrentView('post');
         setSelectedPostSlug(slug);
       } else {
-        setCurrentView('list');
         setSelectedPostSlug(null);
       }
     }
-  }, [currentPath]);
+  }, [currentPath, postsWithSlugs]);
   
   // Get selected post
   const selectedPost = selectedPostSlug 
@@ -418,7 +414,6 @@ const BlogSection = ({ onNavigate, currentPath }) => {
   const navigateToPost = (post) => {
     const path = `/blog/${post.slug}`;
     window.history.pushState({}, '', path);
-    setCurrentView('post');
     setSelectedPostSlug(post.slug);
     window.scrollTo(0, 0);
   };
@@ -426,7 +421,6 @@ const BlogSection = ({ onNavigate, currentPath }) => {
   // Navigate back to blog list
   const navigateToBlogList = () => {
     window.history.pushState({}, '', '/blog');
-    setCurrentView('list');
     setSelectedPostSlug(null);
     window.scrollTo(0, 0);
   };
