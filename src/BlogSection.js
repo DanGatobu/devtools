@@ -413,15 +413,13 @@ const BlogSection = ({ onNavigate, currentPath }) => {
   // Navigate to blog post
   const navigateToPost = (post) => {
     const path = `/blog/${post.slug}`;
-    window.history.pushState({}, '', path);
-    setSelectedPostSlug(post.slug);
+    onNavigate('blog', path);
     window.scrollTo(0, 0);
   };
   
   // Navigate back to blog list
   const navigateToBlogList = () => {
-    window.history.pushState({}, '', '/blog');
-    setSelectedPostSlug(null);
+    onNavigate('blog', '/blog');
     window.scrollTo(0, 0);
   };
   

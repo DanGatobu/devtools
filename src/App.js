@@ -71,6 +71,7 @@ function getInitialTool() {
 
 function App() {
   const [currentTool, setCurrentTool] = useState(getInitialTool); // 'json', 'base64', 'url', 'color', 'regex', 'jwt', 'formatter', 'diff', or 'blog'
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [inputJson, setInputJson] = useState('');
   const [outputJson, setOutputJson] = useState('');
   const [minifiedJson, setMinifiedJson] = useState('');
@@ -83,10 +84,11 @@ function App() {
   const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
 
   // Handle URL-based navigation and update meta tags
-  const navigateTo = useCallback((tool) => {
-    const path = toolToPath[tool] || '/';
+  const navigateTo = useCallback((tool, customPath = null) => {
+    const path = customPath || toolToPath[tool] || '/';
     window.history.pushState({}, '', path);
     setCurrentTool(tool);
+    setCurrentPath(path);
     
     // Update canonical URL
     const canonical = document.querySelector('link[rel="canonical"]');
@@ -112,8 +114,14 @@ function App() {
   // Handle browser back/forward
   useEffect(() => {
     const handlePopState = () => {
-      const tool = pathToTool[window.location.pathname] || 'json';
-      setCurrentTool(tool);
+      const path = window.location.pathname;
+      setCurrentPath(path);
+      if (isBlogPostPath(path)) {
+        setCurrentTool('blog');
+      } else {
+        const tool = pathToTool[path] || 'json';
+        setCurrentTool(tool);
+      }
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -252,7 +260,7 @@ function App() {
   const currentOutput = activeTab === 'formatted' ? outputJson : minifiedJson;
 
   if (currentTool === 'blog') {
-    return <BlogSection onNavigate={navigateTo} currentPath={window.location.pathname} />;
+    return <BlogSection onNavigate={navigateTo} currentPath={currentPath} />;
   }
 
   if (currentTool === 'base64') {
