@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { fullBlogContent } from './blogPosts';
 
 const BlogSection = ({ onNavigate, currentPath }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -23,7 +24,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["base64 encode", "base64 decode", "base64 encoder online"],
       readTime: "8 min read",
       date: "2026-01-15",
-      content: "# How to Encode and Decode Base64: A Complete Developer's Guide\n\nBase64 encoding is a fundamental concept every developer should understand..."
+      content: fullBlogContent[1]
     },
     {
       id: 2,
@@ -33,7 +34,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["base64 encoding", "base64 string converter", "encode to base64"],
       readTime: "6 min read",
       date: "2026-01-12",
-      content: "# Base64 Encoding Explained: When and Why to Use It\n\nBase64 encoding serves specific purposes in web development..."
+      content: fullBlogContent[2]
     },
     {
       id: 3,
@@ -43,7 +44,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["base64 encode decode", "base64 encoder online"],
       readTime: "7 min read",
       date: "2026-01-10",
-      content: "# Base64 vs Other Encoding Methods: Comparison Guide\n\nChoosing the right encoding method is crucial for your project..."
+      content: fullBlogContent[3]
     },
     {
       id: 4,
@@ -53,7 +54,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["base64 decode online", "base64 encoding example"],
       readTime: "8 min read",
       date: "2026-01-08",
-      content: "# Common Base64 Encoding Errors and How to Fix Them\n\nBase64 encoding can be tricky. This guide helps you identify and fix common errors..."
+      content: fullBlogContent[4]
     },
     {
       id: 5,
@@ -63,7 +64,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["base64 encoding", "encode to base64", "base64 decode online"],
       readTime: "10 min read",
       date: "2026-01-06",
-      content: "# Base64 in API Development: Best Practices\n\nBase64 encoding is essential in API development for handling binary data..."
+      content: fullBlogContent[5]
     },
     // Code Diff Tool Posts (5 posts)
     {
@@ -74,7 +75,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["code diff tool", "compare code online", "text diff tool"],
       readTime: "10 min read",
       date: "2026-01-10",
-      content: "# Code Diff Tools: The Ultimate Guide for Developers\n\nCode diff tools are essential for every developer's toolkit..."
+      content: fullBlogContent[6]
     },
     {
       id: 7,
@@ -84,7 +85,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["file comparison tool", "diff checker", "code comparison online"],
       readTime: "9 min read",
       date: "2026-01-07",
-      content: "# How to Compare Code Files: Step-by-Step Tutorial\n\nComparing code files is essential for development workflows..."
+      content: fullBlogContent[7]
     },
     {
       id: 8,
@@ -94,7 +95,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["compare code online", "find differences between files"],
       readTime: "8 min read",
       date: "2026-01-04",
-      content: "# Git Diff vs Online Diff Tools: Which Should You Use?\n\nChoosing between Git diff and online diff tools depends on your specific needs..."
+      content: fullBlogContent[8]
     },
     {
       id: 9,
@@ -104,7 +105,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["code diff tool", "text diff tool"],
       readTime: "9 min read",
       date: "2026-01-02",
-      content: "# Spotting Code Changes: Using Diff Tools Effectively\n\nEffective change detection is crucial for code quality and debugging..."
+      content: fullBlogContent[9]
     },
     {
       id: 10,
@@ -114,7 +115,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["file comparison tool", "code comparison online"],
       readTime: "11 min read",
       date: "2025-12-30",
-      content: "# Merging Code Changes: Diff Tools in Version Control\n\nMerging code changes is a critical skill in collaborative development..."
+      content: fullBlogContent[10]
     },
     // Code Formatter Tool Posts (5 posts)
     {
@@ -125,7 +126,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["code formatter", "code beautifier", "format code online"],
       readTime: "7 min read",
       date: "2026-01-14",
-      content: "# Code Formatter vs Code Beautifier: What's the Difference?\n\nCode formatting tools come in different flavors..."
+      content: fullBlogContent[11]
     },
     {
       id: 12,
@@ -135,7 +136,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["code formatter", "format code online", "javascript formatter"],
       readTime: "12 min read",
       date: "2026-01-11",
-      content: "# Top 5 Code Formatters for 2026: Comparison and Review\n\nChoosing the right code formatter can significantly improve your workflow..."
+      content: fullBlogContent[12]
     },
     {
       id: 13,
@@ -145,7 +146,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["prettier code formatter", "python code formatter", "html formatter online"],
       readTime: "8 min read",
       date: "2026-01-09",
-      content: "# Prettier vs Black: Choosing the Right Code Formatter\n\nPrettier and Black are two of the most popular code formatters..."
+      content: fullBlogContent[13]
     },
     {
       id: 14,
@@ -155,7 +156,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["code formatter", "code beautifier"],
       readTime: "9 min read",
       date: "2026-01-05",
-      content: "# Automatic Code Formatting: Improving Code Quality\n\nAutomatic code formatting is a game-changer for development teams..."
+      content: fullBlogContent[14]
     },
     {
       id: 15,
@@ -165,7 +166,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["format code online", "javascript formatter"],
       readTime: "10 min read",
       date: "2026-01-03",
-      content: "# Code Formatting Best Practices for Teams\n\nConsistent code formatting is crucial for team collaboration..."
+      content: fullBlogContent[15]
     },
     // Color Tool Posts (5 posts)
     {
@@ -176,7 +177,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["color picker", "hex color picker", "color converter"],
       readTime: "11 min read",
       date: "2026-01-13",
-      content: "# Complete Guide to Color Pickers: Tools and Techniques\n\nColor selection is crucial in design and development..."
+      content: fullBlogContent[16]
     },
     {
       id: 17,
@@ -186,7 +187,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["rgb to hex converter", "hex to rgb converter", "color code converter"],
       readTime: "8 min read",
       date: "2026-01-11",
-      content: "# RGB vs Hex vs HSL: Understanding Color Formats\n\nColor formats can be confusing for developers and designers..."
+      content: fullBlogContent[17]
     },
     {
       id: 18,
@@ -196,7 +197,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["color palette generator", "color picker", "color converter"],
       readTime: "12 min read",
       date: "2026-01-08",
-      content: "# Creating Harmonious Color Palettes: A Designer's Guide\n\nColor harmony is the foundation of great design..."
+      content: fullBlogContent[18]
     },
     {
       id: 19,
@@ -206,7 +207,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["color picker", "hex color picker"],
       readTime: "10 min read",
       date: "2026-01-06",
-      content: "# Color Psychology in Web Design: Choosing the Right Palette\n\nColors have a profound psychological impact on users..."
+      content: fullBlogContent[19]
     },
     {
       id: 20,
@@ -216,7 +217,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["color converter", "color palette generator"],
       readTime: "9 min read",
       date: "2026-01-04",
-      content: "# Accessibility in Color Selection: WCAG Guidelines\n\nAccessible color selection is crucial for inclusive web design..."
+      content: fullBlogContent[20]
     },
     // JWT Tool Posts (5 posts)
     {
@@ -227,7 +228,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["jwt decoder", "decode jwt", "jwt token decoder online"],
       readTime: "9 min read",
       date: "2026-01-12",
-      content: "# JWT Decoder: How to Debug JSON Web Tokens\n\nJSON Web Tokens (JWT) are widely used for authentication and authorization..."
+      content: fullBlogContent[21]
     },
     {
       id: 22,
@@ -237,7 +238,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["json web token", "jwt decoder", "jwt encoder"],
       readTime: "13 min read",
       date: "2026-01-09",
-      content: "# Understanding JWT: A Complete Guide for Developers\n\nJSON Web Tokens have become the standard for modern authentication..."
+      content: fullBlogContent[22]
     },
     {
       id: 23,
@@ -247,7 +248,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["jwt validation", "jwt authentication explained", "json web token"],
       readTime: "11 min read",
       date: "2026-01-07",
-      content: "# JWT Authentication: Security Best Practices\n\nSecure JWT implementation is crucial for application security..."
+      content: fullBlogContent[23]
     },
     {
       id: 24,
@@ -257,7 +258,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["jwt decoder", "decode jwt", "jwt token decoder online"],
       readTime: "8 min read",
       date: "2026-01-05",
-      content: "# Decoding JWT Claims: What Each Part Means\n\nJWT tokens contain three parts, each with specific purposes..."
+      content: fullBlogContent[24]
     },
     {
       id: 25,
@@ -267,7 +268,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["jwt authentication explained", "json web token", "jwt validation"],
       readTime: "10 min read",
       date: "2026-01-02",
-      content: "# JWT vs Session Tokens: Which Should You Use?\n\nChoosing between JWT and session tokens depends on your application's needs..."
+      content: fullBlogContent[25]
     },
     // Regex Tool Posts (5 posts)
     {
@@ -278,7 +279,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["regex tester", "regular expression tester", "regex101"],
       readTime: "12 min read",
       date: "2026-01-14",
-      content: "# Regex Tester Tutorial: Master Regular Expressions\n\nRegular expressions are powerful tools for pattern matching and text processing..."
+      content: fullBlogContent[26]
     },
     {
       id: 27,
@@ -288,7 +289,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["test regex online", "regex pattern examples", "regex cheat sheet"],
       readTime: "10 min read",
       date: "2026-01-11",
-      content: "# Common Regex Patterns: Email, Phone, URL Validation\n\nValidation is a crucial part of web development..."
+      content: fullBlogContent[27]
     },
     {
       id: 28,
@@ -298,7 +299,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["regex tester", "regular expression tester"],
       readTime: "9 min read",
       date: "2026-01-08",
-      content: "# Regex Performance: Optimization Tips and Tricks\n\nRegex performance can make or break your application..."
+      content: fullBlogContent[28]
     },
     {
       id: 29,
@@ -308,7 +309,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["regex101", "test regex online"],
       readTime: "11 min read",
       date: "2026-01-06",
-      content: "# Regex in Different Languages: JavaScript, Python, PHP\n\nRegex syntax varies slightly between programming languages..."
+      content: fullBlogContent[29]
     },
     {
       id: 30,
@@ -318,7 +319,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["regex pattern examples", "regex cheat sheet", "regular expression tutorial"],
       readTime: "8 min read",
       date: "2026-01-03",
-      content: "# Debugging Regex Patterns: Common Mistakes and Solutions\n\nRegex debugging can be challenging, but with the right approach..."
+      content: fullBlogContent[30]
     },
     // URL Tool Posts (5 posts)
     {
@@ -329,7 +330,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["url encoder", "url encode online", "percent encoding"],
       readTime: "8 min read",
       date: "2026-01-13",
-      content: "# URL Encoding Explained: Why and How It Works\n\nURL encoding is essential for web development and data transmission..."
+      content: fullBlogContent[31]
     },
     {
       id: 32,
@@ -339,7 +340,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["url decode", "url decoder online", "url safe encoding"],
       readTime: "7 min read",
       date: "2026-01-10",
-      content: "# URL Encoder vs URL Decoder: When to Use Each\n\nURL encoding and decoding are fundamental web development concepts..."
+      content: fullBlogContent[32]
     },
     {
       id: 33,
@@ -349,7 +350,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["percent encoding", "url encode online", "url decoder online"],
       readTime: "9 min read",
       date: "2026-01-07",
-      content: "# Percent Encoding in URLs: A Complete Guide\n\nPercent encoding is the standard method for encoding URLs..."
+      content: fullBlogContent[33]
     },
     {
       id: 34,
@@ -359,7 +360,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["url encoder", "url safe encoding"],
       readTime: "6 min read",
       date: "2026-01-04",
-      content: "# URL Encoding Special Characters: Best Practices\n\nSpecial characters in URLs require careful handling..."
+      content: fullBlogContent[34]
     },
     {
       id: 35,
@@ -369,7 +370,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
       keywords: ["url encode online", "encode url to base64"],
       readTime: "10 min read",
       date: "2026-01-01",
-      content: "# URL Encoding in Different Programming Languages\n\nURL encoding implementation varies across programming languages..."
+      content: fullBlogContent[35]
     }
   ];
 
