@@ -30,7 +30,7 @@ Base64 encoding converts 3 bytes (24 bits) of binary data into 4 ASCII character
 
 ### Example Conversion
 
-\`\`\`
+\\`\\`\`
 Text: "Cat"
 Binary: 01000011 01100001 01110100
 Base64 groups: 010000 110110 000101 110100
@@ -314,12 +314,12 @@ When you need to send binary data (images, files, encrypted data) through these 
 
 **Use Case:** Reduce HTTP requests for small icons and images.
 
-\`\`\`html
+\\`\\`\\`html
 <!-- Data URL with Base64 -->
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
 AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
 9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
-\`\`\`
+\\`\\`\`
 
 **Benefits:**
 - Eliminates HTTP request
@@ -691,7 +691,7 @@ Choosing the right encoding method is crucial for your project's performance, se
 
 #### Size Comparison
 
-\`\`\`javascript
+\\`\\`\\`javascript
 const data = "Hello, World!";
 const buffer = Buffer.from(data);
 
@@ -707,7 +707,7 @@ console.log('Length:', hex.length); // 26 characters
 
 // Original
 console.log('Original:', data.length); // 13 characters
-\`\`\`
+\\`\\`\`
 
 **Size Analysis:**
 - Original: 13 bytes
@@ -1086,7 +1086,7 @@ Base64 encoding can be tricky, especially when dealing with different character 
 
 ### The Problem
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // This will throw an error
 const invalid = "SGVsbG8gV29ybGQh@#$";
 try {
@@ -1094,7 +1094,7 @@ try {
 } catch (e) {
   console.error(e); // InvalidCharacterError
 }
-\`\`\`
+\\`\\`\`
 
 ### Why It Happens
 
@@ -1691,7 +1691,7 @@ APIs typically use JSON or XML for data exchange, both text-based formats. Base6
 
 ### When to Use Base64
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Good: Small files in JSON API
 POST /api/avatar
 {
@@ -1715,7 +1715,7 @@ GET /api/products
     }
   ]
 }
-\`\`\`
+\\`\\`\`
 
 ### When to Avoid Base64
 
@@ -2373,7 +2373,7 @@ A code diff (difference) tool compares two versions of text or code and highligh
 
 ### 1. Command-Line Tools
 
-\`\`\`bash
+\\`\\`\\`bash
 # Unix diff
 diff file1.js file2.js
 
@@ -2385,7 +2385,7 @@ diff -u old.js new.js
 
 # Side-by-side comparison
 diff -y old.js new.js
-\`\`\`
+\\`\\`\`
 
 ### 2. GUI Tools
 
@@ -2422,7 +2422,7 @@ Most IDEs include diff tools:
 @@ -1,5 +1,6 @@
  function greet(name) {
 -  console.log("Hello " + name);
-+  console.log(\`Hello \${name}\`);
++  console.log(\\\`Hello \\\${name}\\\`);
 +  return name;
  }
  
@@ -2808,7 +2808,7 @@ Comparing code files is an essential skill for developers. Whether you're review
 
 Best for: Quick comparisons, automation, terminal users
 
-\`\`\`bash
+\\`\\`\\`bash
 # Compare two files
 git diff file1.js file2.js
 
@@ -2817,7 +2817,7 @@ git diff main:src/app.js feature:src/app.js
 
 # Compare with previous commit
 git diff HEAD~1 HEAD -- src/app.js
-\`\`\`
+\\`\\`\`
 
 ### Method 2: GUI Tools
 
@@ -3348,7 +3348,7 @@ Choosing between Git diff and online diff tools depends on your specific needs, 
 ### Strengths
 
 1. **Version Control Integration**
-\`\`\`bash
+\\`\\`\\`bash
 # Compare with any commit
 git diff HEAD~5 HEAD
 
@@ -3357,7 +3357,7 @@ git diff main feature
 
 # See what changed in last commit
 git diff HEAD^ HEAD
-\`\`\`
+\\`\\`\`
 
 2. **Performance**
 - Instant results for large files
@@ -3850,7 +3850,7 @@ Effective change detection is crucial for code quality and debugging. This guide
 
 ### Change Significance
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Low-impact change (formatting)
 - function hello(){return "hi";}
 + function hello() {
@@ -3865,7 +3865,7 @@ Effective change detection is crucial for code quality and debugging. This guide
 // High-impact change (logic change)
 - if (user.role === 'admin') {
 + if (user.role === 'admin' || user.isOwner) {
-\`\`\`
+\\`\\`\`
 
 ## Technique 1: Context-Aware Diff
 
@@ -4339,7 +4339,7 @@ A merge combines changes from different branches into a single branch. It's esse
 
 ### Types of Merges
 
-\`\`\`bash
+\\`\\`\\`bash
 # Fast-forward merge (no conflicts possible)
 git merge feature  # When feature is ahead of main
 
@@ -4351,7 +4351,7 @@ git merge --squash feature
 
 # No-fast-forward merge (always creates merge commit)
 git merge --no-ff feature
-\`\`\`
+\\`\\`\`
 
 ## Merge Strategies
 
@@ -4930,7 +4930,7 @@ Formatters follow the "one true way" philosophy:
 
 ### Example: Prettier
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Before (any style)
 function hello(name){return "Hello "+name}
 
@@ -4946,7 +4946,7 @@ const user = {
   age: 30,
   email: "john@example.com",
 };
-\`\`\`
+\\`\\`\`
 
 ### Configuration
 
@@ -5342,7 +5342,7 @@ Choosing the right code formatter can significantly improve your workflow. This 
 
 ### Strengths
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Handles complex formatting automatically
 const user = { name: "John", age: 30, email: "john@example.com", address: { street: "123 Main St", city: "Boston", state: "MA", zip: "02101" } };
 
@@ -5358,7 +5358,7 @@ const user = {
     zip: "02101",
   },
 };
-\`\`\`
+\\`\\`\`
 
 ### Configuration
 
@@ -5795,7 +5795,7 @@ Prettier and Black are two of the most popular code formatters, each dominating 
 
 "An opinionated code formatter" - Prettier makes formatting decisions for you, but allows some customization.
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Prettier handles complex cases automatically
 const config = { server: { host: "localhost", port: 3000, ssl: true }, database: { host: "db.example.com", port: 5432, name: "mydb" } };
 
@@ -5812,7 +5812,7 @@ const config = {
     name: "mydb",
   },
 };
-\`\`\`
+\\`\\`\`
 
 ### Configuration Options
 
@@ -6264,7 +6264,7 @@ Automatic code formatting is a game-changer for development teams. This guide ex
 
 ### Time Wasted
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Developer spends time on:
 // - Aligning code manually
 // - Fixing indentation
@@ -6276,7 +6276,7 @@ Automatic code formatting is a game-changer for development teams. This guide ex
 // - Fixing bugs
 // - Improving architecture
 // - Learning new skills
-\`\`\`
+\\`\\`\`
 
 ### Inconsistency
 
@@ -6784,7 +6784,7 @@ Consistent code formatting is crucial for team collaboration. This guide establi
 
 ### 1. Choose One Formatter
 
-\`\`\`bash
+\\`\\`\\`bash
 # Bad: Multiple formatters
 # Developer A uses Prettier
 # Developer B uses Beautifier
@@ -6795,7 +6795,7 @@ Consistent code formatting is crucial for team collaboration. This guide establi
 # Everyone uses Prettier
 # Configured in package.json
 # Enforced by CI/CD
-\`\`\`
+\\`\\`\`
 
 ### 2. Document the Decision
 
@@ -7265,7 +7265,7 @@ Color selection is crucial in design and development. This comprehensive guide c
 
 ### RGB (Red, Green, Blue)
 
-\`\`\`css
+\\`\\`\\`css
 /* RGB format */
 color: rgb(255, 99, 71);  /* Tomato red */
 
@@ -7273,7 +7273,7 @@ color: rgb(255, 99, 71);  /* Tomato red */
 color: rgba(255, 99, 71, 0.5);  /* 50% transparent */
 
 /* Values: 0-255 for each channel */
-\`\`\`
+\\`\\`\`
 
 ### Hexadecimal
 
@@ -7580,7 +7580,7 @@ Color formats can be confusing for developers and designers. This guide explains
 
 ### How It Works
 
-\`\`\`css
+\\`\\`\\`css
 /* RGB: Additive color model */
 rgb(red, green, blue)
 
@@ -7593,7 +7593,7 @@ rgb(0, 0, 0)       /* Black */
 
 /* RGBA: With transparency */
 rgba(255, 99, 71, 0.5)  /* 50% transparent */
-\`\`\`
+\\`\\`\`
 
 ### When to Use RGB
 
@@ -7921,7 +7921,7 @@ Color harmony is the foundation of great design. This guide teaches you color th
 
 ### The Color Wheel
 
-\`\`\`
+\\`\\`\`
 Primary Colors (120° apart):
 - Red (0°)
 - Yellow (120°)
@@ -8340,7 +8340,7 @@ Colors have a profound psychological impact on users. This guide explores color 
 **Use for:** Call-to-action buttons, sales, alerts
 **Brands:** Coca-Cola, YouTube, Netflix
 
-\`\`\`css
+\\`\\`\\`css
 /* Red for urgency */
 .sale-banner {
   background: hsl(0, 85%, 55%);
@@ -8350,7 +8350,7 @@ Colors have a profound psychological impact on users. This guide explores color 
 .error-message {
   color: hsl(0, 70%, 50%);
 }
-\`\`\`
+\\`\\`\`
 
 ### Blue
 **Emotions:** Trust, calm, professionalism, security
@@ -8718,7 +8718,7 @@ Accessible color selection is crucial for inclusive web design. This guide cover
 
 ### Contrast Ratios
 
-\`\`\`
+\\`\\`\`
 WCAG 2.1 Levels:
 
 Level AA (Minimum):
@@ -9073,7 +9073,7 @@ JSON Web Tokens (JWT) are widely used for authentication and authorization. This
 
 ### Three Parts
 
-\`\`\`
+\\`\\`\`
 JWT Format: header.payload.signature
 
 Example:
@@ -9443,7 +9443,7 @@ JWT (JSON Web Token) is an open standard (RFC 7519) for securely transmitting in
 
 ### Structure
 
-\`\`\`
+\\`\\`\`
 header.payload.signature
 
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.  ← Header
@@ -9796,7 +9796,7 @@ Secure JWT implementation is crucial for application security. This guide covers
 
 ### 1. Use Strong Secrets
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Generate strong secret
 const crypto = require('crypto');
 const secret = crypto.randomBytes(64).toString('hex');
@@ -9809,7 +9809,7 @@ JWT_REFRESH_SECRET=another-generated-secret-here
 // Use in application
 const jwt = require('jsonwebtoken');
 const token = jwt.sign(payload, process.env.JWT_SECRET);
-\`\`\`
+\\`\\`\`
 
 ### 2. Use Appropriate Algorithms
 
@@ -10251,14 +10251,14 @@ JWT tokens contain three parts, each with specific purposes. This guide explains
 
 ### iss (Issuer)
 
-\`\`\`javascript
+\\`\\`\\`javascript
 {
   "iss": "https://auth.example.com"
 }
 
 // Who created and signed the token
 // Use to verify token source
-\`\`\`
+\\`\\`\`
 
 ### sub (Subject)
 
@@ -10491,7 +10491,7 @@ Choosing between JWT and session-based authentication depends on your applicatio
 
 ### How It Works
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // 1. User logs in
 const token = jwt.sign({ userId: 123 }, secret);
 res.json({ token });
@@ -10501,12 +10501,12 @@ localStorage.setItem('token', token);
 
 // 3. Client sends token with requests
 fetch('/api/data', {
-  headers: { 'Authorization': \`Bearer \${token}\` }
+  headers: { 'Authorization': \\`Bearer \\${token}\\` }
 });
 
 // 4. Server verifies token
 const decoded = jwt.verify(token, secret);
-\`\`\`
+\\`\\`\`
 
 ### Pros
 
@@ -10803,7 +10803,7 @@ Regular expressions are powerful tools for pattern matching and text processing.
 
 ### Simple Patterns
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Literal match
 const regex = /hello/;
 regex.test('hello world');  // true
@@ -10815,7 +10815,7 @@ regex.test('HELLO world');  // true
 // Global match
 const regex = /o/g;
 'hello world'.match(regex);  // ['o', 'o']
-\`\`\`
+\\`\\`\`
 
 ### Character Classes
 
@@ -11074,7 +11074,7 @@ Validation is a crucial part of web development. This guide provides battle-test
 
 ### Basic Email Pattern
 
-\`\`\`javascript
+\\`\\`\\`javascript
 const basicEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Matches:
@@ -11085,7 +11085,7 @@ const basicEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // invalid.email ✗
 // @example.com ✗
 // user@.com ✗
-\`\`\`
+\\`\\`\`
 
 ### Comprehensive Email Pattern
 
@@ -11373,7 +11373,7 @@ Regex performance can make or break your application. This guide teaches you how
 
 ### Catastrophic Backtracking
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // ❌ Bad: Catastrophic backtracking
 const bad = /(a+)+b/;
 bad.test('aaaaaaaaaaaaaaaaaaaaaaaac');  // Takes forever!
@@ -11381,7 +11381,7 @@ bad.test('aaaaaaaaaaaaaaaaaaaaaaaac');  // Takes forever!
 // ✓ Good: No backtracking
 const good = /a+b/;
 good.test('aaaaaaaaaaaaaaaaaaaaaaaac');  // Fast
-\`\`\`
+\\`\\`\`
 
 ### Benchmark Example
 
@@ -11686,7 +11686,7 @@ Regex syntax varies slightly between programming languages. This guide helps you
 
 ### Basic Patterns
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // JavaScript
 const regex = /\d+/g;
 regex.test('123');
@@ -11699,7 +11699,7 @@ re.search(regex, '123')
 // PHP
 $regex = '/\d+/';
 preg_match($regex, '123');
-\`\`\`
+\\`\\`\`
 
 ### Flags
 
@@ -11966,7 +11966,7 @@ Regex debugging can be challenging, but with the right approach, you can identif
 
 ### 1. Forgetting to Escape Special Characters
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // ❌ Wrong: . matches any character
 const wrong = /example.com/;
 wrong.test('exampleXcom');  // true (unexpected!)
@@ -11978,7 +11978,7 @@ right.test('example.com');  // true
 
 // Special characters that need escaping:
 // . ^ $ * + ? { } [ ] \ | ( )
-\`\`\`
+\\`\\`\`
 
 ### 2. Greedy vs Non-Greedy
 
@@ -12311,7 +12311,7 @@ URLs can only contain certain characters from the ASCII character set. URL encod
 
 ### Reserved Characters
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Reserved characters in URLs
 const reserved = {
   ':': '%3A',
@@ -12335,7 +12335,7 @@ const reserved = {
   '%': '%25',
   ' ': '%20' or '+'
 };
-\`\`\`
+\\`\\`\`
 
 ## How URL Encoding Works
 
@@ -12645,11 +12645,11 @@ URL encoding and decoding are fundamental web development concepts. This guide e
 ### URL Encoder
 Converts special characters to percent-encoded format for safe transmission.
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // Input: hello world
 // Output: hello%20world
 encodeURIComponent('hello world');
-\`\`\`
+\\`\\`\`
 
 ### URL Decoder
 Converts percent-encoded characters back to their original form.
@@ -12915,7 +12915,7 @@ Percent encoding is the standard method for encoding URLs. This comprehensive gu
 
 Percent encoding (also called URL encoding) represents characters as a percent sign (%) followed by two hexadecimal digits.
 
-\`\`\`
+\\`\\`\`
 Character → UTF-8 bytes → Percent encoding
 
 Space (0x20) → %20
@@ -13224,7 +13224,7 @@ Special characters in URLs require careful handling. This guide covers best prac
 
 ### Reserved Characters
 
-\`\`\`javascript
+\\`\\`\\`javascript
 const reserved = {
   '!': '%21',  // Exclamation
   '#': '%23',  // Hash
@@ -13245,7 +13245,7 @@ const reserved = {
   '[': '%5B',  // Left bracket
   ']': '%5D'   // Right bracket
 };
-\`\`\`
+\\`\\`\`
 
 ### Unsafe Characters
 
@@ -13578,7 +13578,7 @@ URL encoding implementation varies across programming languages. This guide comp
 
 ### Built-in Functions
 
-\`\`\`javascript
+\\`\\`\\`javascript
 // encodeURI() - Encode entire URL
 const url = 'https://example.com/path with spaces?q=hello world';
 encodeURI(url);
@@ -13596,7 +13596,7 @@ decodeURI('https://example.com/path%20with%20spaces');
 // decodeURIComponent() - Decode URL component
 decodeURIComponent('hello%20%26%20goodbye');
 // 'hello & goodbye'
-\`\`\`
+\\`\\`\`
 
 ### URLSearchParams
 
