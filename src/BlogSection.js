@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { marked } from 'marked';
 import { fullBlogContent } from './blogPosts';
+
+// Configure marked options
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+  headerIds: true,
+  mangle: false
+});
 
 const BlogSection = ({ onNavigate, currentPath }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -455,7 +464,7 @@ const BlogSection = ({ onNavigate, currentPath }) => {
             </div>
           </header>
           
-          <div className="blog-content" dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
+          <div className="blog-content" dangerouslySetInnerHTML={{ __html: marked.parse(selectedPost.content) }} />
           
           <footer className="blog-post-footer">
             <div className="blog-actions">
