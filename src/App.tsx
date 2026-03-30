@@ -16,6 +16,7 @@ import CodeFormatterPage from "./pages/CodeFormatterPage.tsx";
 import CodeDiff from "./pages/CodeDiff.tsx";
 import XmlTool from "./pages/XmlTool.tsx";
 import Blog from "./pages/Blog.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import FeedbackPopup from "./components/FeedbackPopup.tsx";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/code-diff" element={<CodeDiff />} />
             <Route path="/xml" element={<XmlTool />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
