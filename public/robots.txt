@@ -1,27 +1,14 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://devtoolss.sbs/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Allow all major search engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Slurp
+User-agent: Twitterbot
 Allow: /
 
-User-agent: DuckDuckBot
+User-agent: facebookexternalhit
 Allow: /
 
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
+User-agent: *
 Allow: /
