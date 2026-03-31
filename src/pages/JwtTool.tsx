@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEO } from "@/components/SEO";
 import { useState } from "react";
 
 const JwtTool = () => {
@@ -22,6 +23,7 @@ const JwtTool = () => {
 
   return (
     <Layout>
+      <SEO title="JWT Decoder" description="Decode and inspect JWT tokens online. View header, payload, and claims without verification." canonical="/jwt" keywords="jwt decoder, jwt parser, json web token decoder, jwt online" />
       <div className="container py-10 max-w-3xl">
         <h1 className="text-2xl font-mono font-bold text-foreground mb-6">JWT Tool</h1>
         <div>

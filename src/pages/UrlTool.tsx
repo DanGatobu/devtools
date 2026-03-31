@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEO } from "@/components/SEO";
 import { useState } from "react";
 
 const UrlTool = () => {
@@ -17,6 +18,7 @@ const UrlTool = () => {
 
   return (
     <Layout>
+      <SEO title="URL Encoder/Decoder" description="Encode, decode, and parse URLs online. Extract query parameters, protocol, host, and path from any URL." canonical="/url" keywords="url encoder, url decoder, url parser, encode url online, urlencode" faq={[{question:"Why do I need to URL encode?",answer:"URL encoding converts special characters to percent-encoded format so they can be safely transmitted in URLs."},{question:"Can I parse URL query parameters?",answer:"Yes, paste any URL and we'll extract all query parameters into a readable format."}]} />
       <div className="container py-10">
         <h1 className="text-2xl font-mono font-bold text-foreground mb-6">URL Tool</h1>
         <div className="grid md:grid-cols-2 gap-4">

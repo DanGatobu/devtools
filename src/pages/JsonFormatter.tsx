@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEO } from "@/components/SEO";
 import { useState } from "react";
 
 const JsonFormatter = () => {
@@ -28,6 +29,7 @@ const JsonFormatter = () => {
 
   return (
     <Layout>
+      <SEO title="JSON Formatter & Validator" description="Format, validate, and minify JSON data online for free. Pretty print JSON with configurable indentation." canonical="/json" keywords="json formatter, json validator, json beautifier, json minifier, pretty print json" faq={[{question:"How do I format JSON online?",answer:"Paste your JSON into the input, click Format, and get perfectly indented JSON instantly."},{question:"Is this JSON validator free?",answer:"Yes, completely free with no sign-up required."},{question:"Can I minify JSON?",answer:"Yes, click the Minify button to compress JSON by removing all whitespace."}]} />
       <div className="container py-10">
         <h1 className="text-2xl font-mono font-bold text-foreground mb-6">JSON Formatter</h1>
         <div className="grid md:grid-cols-2 gap-4">

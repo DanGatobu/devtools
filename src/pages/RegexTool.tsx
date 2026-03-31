@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEO } from "@/components/SEO";
 import { useState } from "react";
 
 const RegexTool = () => {
@@ -22,6 +23,7 @@ const RegexTool = () => {
 
   return (
     <Layout>
+      <SEO title="Regex Tester" description="Test and debug regular expressions online with real-time matching, flags support, and match highlighting." canonical="/regex" keywords="regex tester, regex validator, regular expression tester, regex online, regex debugger" />
       <div className="container py-10 max-w-3xl">
         <h1 className="text-2xl font-mono font-bold text-foreground mb-6">Regex Tool</h1>
         <div className="space-y-4">
